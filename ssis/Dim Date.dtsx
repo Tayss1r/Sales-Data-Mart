@@ -1,0 +1,787 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/6/2025 7:16:33 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="TAYSSIR"
+  DTS:CreatorName="TAYSSIR\arwaw"
+  DTS:DTSID="{E5167978-7573-450B-AEE8-2949B094F9AE}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{37BBC2A6-E80F-4F07-830F-95A198D052A9}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{DF07DBCC-E43B-4A0B-82C2-DE426A73C9FA}"
+      DTS:ObjectName="Flat File Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="2057"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\arwaw\Desktop\dim_date.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="full_date"
+              DTS:DTSID="{AA8EF2B2-299C-4C64-98BE-673A4256D457}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="date_key"
+              DTS:DTSID="{91A84CC3-7555-4B8C-A063-372380BC4B59}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="calendar_year"
+              DTS:DTSID="{82C3D132-4DD9-4C22-903E-2360B4F37A3C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="calendar_quarter"
+              DTS:DTSID="{2A0F2094-EBC0-49D6-8DFD-81776767A5A2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="calendar_month_num"
+              DTS:DTSID="{6473B435-B3F6-4F95-8A5F-C8B99298526B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="calendar_month_name"
+              DTS:DTSID="{DC0C29EC-F2A9-489B-B534-58A4BFCAEBEA}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT - Dim Date"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{029F290D-ABC5-45A7-9162-66E3A2E3B7E2}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT - Dim Date"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT - Dim Date\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT - Dim Date\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Dim Date\Data Conversion.Inputs[Data Conversion Input].Columns[calendar_month_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="calendar_month_name"
+                      lineageId="Package\DFT - Dim Date\Flat File Source.Outputs[Flat File Source Output].Columns[calendar_month_name]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Dim Date\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\DFT - Dim Date\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Dim Date\Data Conversion.Outputs[Data Conversion Output].Columns[dts_month_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="15"
+                      lineageId="Package\DFT - Dim Date\Data Conversion.Outputs[Data Conversion Output].Columns[dts_month_name]"
+                      name="dts_month_name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT - Dim Date\Flat File Source.Outputs[Flat File Source Output].Columns[calendar_month_name]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT - Dim Date\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\DFT - Dim Date\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Dim Date\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Dim Date\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Dim Date\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Dim Date\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Dim Date\Flat File Source"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="2057"
+              name="Flat File Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Dim Date\Flat File Source.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT - Dim Date\Flat File Source.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Dim Date\Flat File Source.Outputs[Flat File Source Output].Columns[full_date]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Dim Date\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[full_date]"
+                      length="50"
+                      lineageId="Package\DFT - Dim Date\Flat File Source.Outputs[Flat File Source Output].Columns[full_date]"
+                      name="full_date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Dim Date\Flat File Source.Outputs[Flat File Source Output].Columns[date_key]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Dim Date\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[date_key]"
+                      length="50"
+                      lineageId="Package\DFT - Dim Date\Flat File Source.Outputs[Flat File Source Output].Columns[date_key]"
+                      name="date_key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Dim Date\Flat File Source.Outputs[Flat File Source Output].Columns[calendar_year]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Dim Date\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[calendar_year]"
+                      length="50"
+                      lineageId="Package\DFT - Dim Date\Flat File Source.Outputs[Flat File Source Output].Columns[calendar_year]"
+                      name="calendar_year"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Dim Date\Flat File Source.Outputs[Flat File Source Output].Columns[calendar_quarter]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Dim Date\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[calendar_quarter]"
+                      length="50"
+                      lineageId="Package\DFT - Dim Date\Flat File Source.Outputs[Flat File Source Output].Columns[calendar_quarter]"
+                      name="calendar_quarter"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Dim Date\Flat File Source.Outputs[Flat File Source Output].Columns[calendar_month_num]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Dim Date\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[calendar_month_num]"
+                      length="50"
+                      lineageId="Package\DFT - Dim Date\Flat File Source.Outputs[Flat File Source Output].Columns[calendar_month_num]"
+                      name="calendar_month_num"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Dim Date\Flat File Source.Outputs[Flat File Source Output].Columns[calendar_month_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Dim Date\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[calendar_month_name]"
+                      length="50"
+                      lineageId="Package\DFT - Dim Date\Flat File Source.Outputs[Flat File Source Output].Columns[calendar_month_name]"
+                      name="calendar_month_name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Dim Date\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[full_date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="full_date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Dim Date\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[date_key]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="date_key" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Dim Date\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[calendar_year]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="calendar_year" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Dim Date\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[calendar_quarter]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="calendar_quarter" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Dim Date\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[calendar_month_num]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="calendar_month_num" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Dim Date\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[calendar_month_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="calendar_month_name" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT - Dim Date\Flat File Source.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Dim Date\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\DFT - Dim Date\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\DFT - Dim Date\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Dim Date\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Dim Date\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Dim Date\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Dim Date\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[dim_date]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Dim Date\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{AB9960A8-4BED-4D00-B497-010F51A55CDE}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DestinationDatabase]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT - Dim Date\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Dim Date\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[full_date]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="full_date"
+                      externalMetadataColumnId="Package\DFT - Dim Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[full_date]"
+                      lineageId="Package\DFT - Dim Date\Flat File Source.Outputs[Flat File Source Output].Columns[full_date]" />
+                    <inputColumn
+                      refId="Package\DFT - Dim Date\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[date_key]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="date_key"
+                      externalMetadataColumnId="Package\DFT - Dim Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[date_key]"
+                      lineageId="Package\DFT - Dim Date\Flat File Source.Outputs[Flat File Source Output].Columns[date_key]" />
+                    <inputColumn
+                      refId="Package\DFT - Dim Date\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[calendar_year]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="calendar_year"
+                      externalMetadataColumnId="Package\DFT - Dim Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[calendar_year]"
+                      lineageId="Package\DFT - Dim Date\Flat File Source.Outputs[Flat File Source Output].Columns[calendar_year]" />
+                    <inputColumn
+                      refId="Package\DFT - Dim Date\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[calendar_quarter]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="calendar_quarter"
+                      externalMetadataColumnId="Package\DFT - Dim Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[calendar_quarter]"
+                      lineageId="Package\DFT - Dim Date\Flat File Source.Outputs[Flat File Source Output].Columns[calendar_quarter]" />
+                    <inputColumn
+                      refId="Package\DFT - Dim Date\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[calendar_month_num]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="calendar_month_num"
+                      externalMetadataColumnId="Package\DFT - Dim Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[calendar_month_num]"
+                      lineageId="Package\DFT - Dim Date\Flat File Source.Outputs[Flat File Source Output].Columns[calendar_month_num]" />
+                    <inputColumn
+                      refId="Package\DFT - Dim Date\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[dts_month_name]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="dts_month_name"
+                      externalMetadataColumnId="Package\DFT - Dim Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[calendar_month_name]"
+                      lineageId="Package\DFT - Dim Date\Data Conversion.Outputs[Data Conversion Output].Columns[dts_month_name]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Dim Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[date_key]"
+                      dataType="i4"
+                      name="date_key" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Dim Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[full_date]"
+                      dataType="dbDate"
+                      name="full_date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Dim Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[calendar_year]"
+                      dataType="i4"
+                      name="calendar_year" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Dim Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[calendar_quarter]"
+                      dataType="i4"
+                      name="calendar_quarter" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Dim Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[calendar_month_num]"
+                      dataType="i4"
+                      name="calendar_month_num" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Dim Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[calendar_month_name]"
+                      dataType="wstr"
+                      length="15"
+                      name="calendar_month_name" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Dim Date\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT - Dim Date\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Dim Date\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Dim Date\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Dim Date\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Dim Date\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT - Dim Date.Paths[Data Conversion Output]"
+              endId="Package\DFT - Dim Date\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\DFT - Dim Date\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\DFT - Dim Date.Paths[Flat File Source Output]"
+              endId="Package\DFT - Dim Date\Data Conversion.Inputs[Data Conversion Input]"
+              name="Flat File Source Output"
+              startId="Package\DFT - Dim Date\Flat File Source.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{361BD898-7873-49C3-8D21-6C8CFB23BE60}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{AB9960A8-4BED-4D00-B497-010F51A55CDE}"
+          SQLTask:SqlStatementSource="DELETE FROM dim_date;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{1F68AD75-B39A-4F55-A4EB-6268883D9824}"
+      DTS:From="Package\Execute SQL Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DFT - Dim Date" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="156,42"
+          Id="Package\DFT - Dim Date"
+          TopLeft="520,147" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Execute SQL Task"
+          TopLeft="528,34" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="613,76">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-15,71"
+              Start="0,0"
+              End="-15,63.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.5"
+                    Point2="0,35.5"
+                    Point3="-4,35.5" />
+                  <mssgle:LineSegment
+                    End="-11,35.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-11,35.5"
+                    Point2="-15,35.5"
+                    Point3="-15,39.5" />
+                  <mssgle:LineSegment
+                    End="-15,63.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT - Dim Date">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="156,42"
+          Id="Package\DFT - Dim Date\Flat File Source"
+          TopLeft="530,90" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\DFT - Dim Date\OLE DB Destination"
+          TopLeft="528,253" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\DFT - Dim Date\Data Conversion"
+          TopLeft="540,171" />
+        <EdgeLayout
+          Id="Package\DFT - Dim Date.Paths[Flat File Source Output]"
+          TopLeft="608,132">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="12.5,39"
+              Start="0,0"
+              End="12.5,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.5"
+                    Point2="0,19.5"
+                    Point3="4,19.5" />
+                  <mssgle:LineSegment
+                    End="8.5,19.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="8.5,19.5"
+                    Point2="12.5,19.5"
+                    Point3="12.5,23.5" />
+                  <mssgle:LineSegment
+                    End="12.5,31.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT - Dim Date.Paths[Data Conversion Output]"
+          TopLeft="618.5,213">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40"
+              Start="0,0"
+              End="0,32.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Dim Date\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
